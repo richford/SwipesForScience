@@ -8,14 +8,14 @@
     </div>
 
     <!-- Progress Bar -->
-    <div class="pbar pt-3 pb-3" v-if="currentBin.bin">
+    <!-- <div class="pbar pt-3 pb-3" id="div-pbar" v-if="currentBin.bin">
       <b-progress
-        :value="scrollPosition"
+        :value="progressPosition"
         :max="1"
         show-progress
         class="ml-3 mr-3"
       ></b-progress>
-    </div>
+    </div> -->
 
     <!-- Introduction steps -->
     <div
@@ -23,9 +23,9 @@
       :key="'intro' + index"
       class="fullpage"
     >
-      <div class="" :id="'intro' + index">
+      <div class="pt-3" :id="'intro' + index">
         <p v-html="step.text"></p>
-        <span class="invisible">{{ step.text }}</span>
+        <!-- <span class="invisible">{{ step.text }}</span> -->
       </div>
       <img :src="step.image" class="mt-3 pt-3 img" />
       <hr />
@@ -35,9 +35,9 @@
     <div
       v-for="(step, index) in steps.examples"
       :key="'example' + index"
-      class="examplefullpage"
+      class="fullpage"
     >
-      <div class="text-center message w-100" :id="'example' + index">
+      <div class="pt-3 text-center w-100" :id="'example' + index">
         <ReviewModal
           :widgetPointer="step.pointer"
           :userInfo="userInfo"
@@ -49,7 +49,7 @@
         ></ReviewModal>
 
         <p v-html="step.text"></p>
-        <span class="invisible">{{ step.text }}</span>
+        <!-- <span class="invisible">{{ step.text }}</span> -->
         <div v-if="step.pointer" class="mt-3">
           <WidgetSelector
             :widgetType="widgetType"
@@ -83,20 +83,13 @@
   width: 100%;
   max-width: 500px;
 }
+
 .tutorial {
   /* height: 500vh; */
 }
 
 .fullpage {
-  height: 110%;
-}
-
-.examplefullpage {
-  min-height: 125vh;
-}
-
-.message {
-  position: absolute;
+  height: 100%;
 }
 
 .invisible {
@@ -132,7 +125,7 @@ Vue.use(VueScrollTo, {
   container: "body",
   duration: 500,
   easing: "ease",
-  offset: -75,
+  offset: 0,
   force: true,
   cancelable: true,
   onStart: false,
@@ -154,7 +147,8 @@ export default {
       /**
        * The current scroll position
        */
-      scrollPosition: 0,
+      progressPosition: 0,
+      scrollY: 0,
       /**
        * The sample IDs summary (not implemented yet)
        */
@@ -162,7 +156,8 @@ export default {
       /**
        * User settings from firebase (not implemented yet)
        */
-      userSettings: {} // TODO: fill this properly
+      userSettings: {}, // TODO: fill this properly
+      bins: []
     };
   },
   props: {
@@ -214,6 +209,9 @@ export default {
     }
   },
   watch: {},
+  mounted() {
+    this.setBins();
+  },
   computed: {
     /**
      * The widget type defined in config.
@@ -239,46 +237,17 @@ export default {
     backgroundAnimation() {
       return this.config.tutorial.customBackgroundAnimation;
     },
-    /**
-     * The cutoffs of scrolling,
-     * to help map scroll position to the step of the tutorial
-     */
-    bins() {
-      const Nsteps = this.steps.intro.length + this.steps.examples.length;
-      const binSize = 1 / Nsteps;
-      const bins = [];
-      for (let i = 0; i < Nsteps; i += 1) {
-        bins.push({ bin: i, from: i * binSize, to: (i + 1) * binSize });
-      }
-      return bins;
-    },
-    /**
-     * The current bin based on scroll position.
-     */
     currentBin() {
       const that = this;
       const cBin = _.filter(
         this.bins,
-        b => that.scrollPosition <= b.to && that.scrollPosition > b.from
+        b => that.scrollY <= b.to && that.scrollY >= b.from
       );
       if (cBin.length) {
         return cBin[0];
       }
 
       return { bin: 0 };
-    },
-    /**
-     * The current stage, either the intro text stage,
-     * or the part that shows how the widget works.
-     */
-    currentStage() {
-      if (this.currentBin.bin < this.steps.intro.length) {
-        return { ...this.steps.intro[this.currentBin.bin], mode: "intro" };
-      }
-      return {
-        ...this.steps.examples[this.currentBin.bin - this.steps.intro.length],
-        mode: "examples"
-      };
     },
     /**
      * The next step that should be displayed.
@@ -291,6 +260,35 @@ export default {
     }
   },
   methods: {
+    setBins() {
+      const Nsteps = this.steps.intro.length + this.steps.examples.length;
+      this.bins = [];
+      if (this.$el) {
+        let startIdx = 1;
+        if (this.$el.children[startIdx].id == "div-pbar") {
+          startIdx += 1;
+        }
+
+        for (let i = startIdx; i <= Nsteps; i += 1) {
+          const child = this.$el.children[i];
+          let from = child.offsetTop;
+          if (i == startIdx) {
+            from = 0;
+          }
+          let to = child.offsetTop + child.offsetHeight;
+          this.bins.push({ bin: i - startIdx, from: from, to: to });
+        }
+      } else {
+        const binSize = 1 / Nsteps;
+        for (let i = 0; i < Nsteps; i += 1) {
+          this.bins.push({
+            bin: i,
+            from: i * binSize,
+            to: (i + 1) * binSize
+          });
+        }
+      }
+    },
     /**
      * When this method is run, we tell the parent component that the
      * user has completed the tutorial.
@@ -299,22 +297,13 @@ export default {
       this.$emit("taken_tutorial", true);
     },
     /**
-     * Keep track of the scroll position and save it to the scrollPosition variable.
+     * Keep track of the scroll position and save it to the progressPosition variable.
      */
     handleScroll() {
-      const h = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0
-      );
-      const scrollPosition =
-        (window.scrollY - 60) / (this.$refs.tutorial.clientHeight - h);
-      if (scrollPosition < 0) {
-        this.scrollPosition = 0;
-      } else if (scrollPosition > 1) {
-        this.scrollPosition = 1;
-      } else {
-        this.scrollPosition = scrollPosition;
-      }
+      const Nsteps = this.steps.intro.length + this.steps.examples.length;
+      this.progressPosition = this.currentBin.bin / Nsteps;
+      this.setBins();
+      this.scrollY = Math.ceil(window.scrollY);
     }
   },
   /**
