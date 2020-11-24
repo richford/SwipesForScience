@@ -207,16 +207,22 @@
           "tutorialStep": 0
         },
         {
+          "text": "This one has a thick dark diagonal band. Vote 'fail' (or swipe left) on this one.",
+          "pointer": "sub-NDARGG539YGN_desc-b0colorfa_slice-2_medium",
+          "answer": 0,
+          "tutorialStep": 1
+        },
+        {
           "text": "This one's no good either.<br>There are dark spots in the underlying grayscale image<br>that aren't filled in with colored bundles.<br>Swipe left!",
           "pointer": "sub-NDARGC099LDZ_desc-b0colorfa_slice-3_medium",
           "answer": 0,
-          "tutorialStep": 2
+          "tutorialStep": 1
         },
         {
           "text": "This one is borderline perhaps and it's hard to tell whether to pass or fail.<br>The existing colored bundles look fine but there are big dark spots in the grayscale image that are not filled in with color.<br>If you're not sure, click 'Comments' to discuss with the scientists and other users.",
           "pointer": "sub-NDARBD341NEM_desc-b0colorfa_slice-2_medium",
           "answer": 0,
-          "tutorialStep": 1
+          "tutorialStep": 2
         },
         {
           "text": "Are you ready to play?",
