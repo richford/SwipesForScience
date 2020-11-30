@@ -155,11 +155,11 @@
           "image": "https://raw.githubusercontent.com/richford/fibr/master/src/assets/undraw_medical_research_qg4d.svg?sanitize=true"
         },
         {
-          "text": "Here is an animated MRI image of the head (looking from the top down).",
+          "text": "Here is an animated MRI image of the head (looking from the top down).<br>There are dark and light spots. In this kind of image, the dark regions comprise<br>the 'white matter,' with fiber bundles connecting different parts of the brain.",
           "image": "https://raw.githubusercontent.com/richford/fibr/master/src/assets/sub-NDARNH170TJU_desc-b0_optimized.gif"
         },
         {
-          "text": "A computer has colored in parts of the brain<br>where it thinks it has found fibers<br>connecting different parts of the brain.",
+          "text": "A computer has colored in parts of the brain<br>where it has found fibers connecting different parts of the brain.<br>Most of the dark spots have been colored in using red, green, or blue.",
           "image": "https://raw.githubusercontent.com/richford/fibr/master/src/assets/sub-NDARNH170TJU_desc-colorfa_optimized.gif"
         }
       ],
@@ -171,13 +171,13 @@
           "tutorialStep": 0
         },
         {
-          "text": "Swipe left when its bad. In this example, there is little to no color in the image and there are dark bands across the underlying grayscale image.",
+          "text": "Swipe left when its bad. In this example, there is little to no color in the image<br>and there are dark bands across the underlying grayscale image.",
           "pointer": "sub-NDARYZ871DXQ_desc-b0colorfa_slice-0_medium",
           "answer": 0,
           "tutorialStep": 1
         },
         {
-          "text": "Here's another good example.<br>This time it's a static image, and that's okay.<br>Notice how the colored bundles form continuous lines.<br>Swipe right!",
+          "text": "Here's another good example.<br>This time it's a static image, and that's okay.<br>Notice how the colored bundles form continuous lines<br>and fill in the dark regions from the underlying image. Swipe right!",
           "pointer": "sub-NDARNC287MK5_desc-b0colorfa_slice-2_medium_5",
           "answer": 1,
           "tutorialStep": 0
@@ -225,7 +225,7 @@
           "tutorialStep": 2
         },
         {
-          "text": "Are you ready to play?",
+          "text": "Are you ready to play? Don't worry too much about making mistakes. Just rate as best as you can.<br>You can always return to the tutorial. You can leave any time you like and we'll save your progress.",
           "tutorialCompleted": true
         }
       ]
