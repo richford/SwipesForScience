@@ -1,6 +1,6 @@
 <template>
   <div id="about">
-    <h1>About</h1>
+    <h1>About fibr</h1>
 
     <b-container>
       <p class="mt-3">
@@ -9,7 +9,7 @@
       </p>
       <p class="mt-3">
         Your objective is to classify these slices as "Pass" or "Fail" by
-        swiping right or left
+        swiping right or left.
       </p>
       <p class="mt-3">
         You get points for each sample you annotate.
