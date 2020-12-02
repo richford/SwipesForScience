@@ -5,18 +5,41 @@
     <b-container>
       <p class="mt-3">
         Fibr is an app for quality control of diffusion MRI images from the
-        <a href="https://healthybrainnetwork.org/">Healthy Brain Network.</a>
+        <a href="https://healthybrainnetwork.org/">Healthy Brain Network</a>.
       </p>
+      <h1 class="mt-3">How can you help?</h1>
       <p class="mt-3">
-        Your objective is to classify these slices as "Pass" or "Fail" by
-        swiping right or left.
+        You will see static images or moving gifs of brain MRIs. Your objective
+        is to classify these images as "Pass" or "Fail" by swiping right or
+        left. See the <b-link to="tutorial">tutorial</b-link> for further
+        instructions on how to rate images.
       </p>
+      <h1 class="mt-3">Why are we doing this?</h1>
       <p class="mt-3">
+        Innovations in medical imaging are helping researchers understand the
+        developing human brain. There is growing hope that these technologies
+        will lead to clinical tools that can help diagnose and treat diseases,
+        mental illness and learning disorders. But to achieve this dream, we
+        need massive MRI datasets to capture the broad spectrum of brain
+        development. So the Child Mind Institute has launched the Healthy Brain
+        Network, a landmark mental health study that is collecting MRI images
+        and other assessment data from 10,000 New York City area children. We
+        have developed algorithms that analyze these images to measure the
+        integrity of connections between different parts of the brain. But they
+        aren't perfect and sometimes do a bad job, especially if the child moved
+        a lot in the scanner (kids have a hard time staying still sometimes). We
+        need humans to visually inspect the quality of the output. Computers can
+        struggle with this sort of thing but humans are great at it! That's why
+        we need you. We need you to help researchers learn about pediatric
+        mental health and learning disorders.
+      </p>
+      <h1 class="mt-3">
         You get points for each sample you annotate.
-      </p>
+      </h1>
       <p class="mt-3">
         You can unlock the following animals based on the number of points you
-        have:
+        have. Go unlock them all so you can brag about being a unicorn
+        &#128526;!
       </p>
 
       <b-container fluid class="p-4">
@@ -38,7 +61,7 @@
         </b-row>
       </b-container>
 
-      <h2>Acknowledgements</h2>
+      <h1>Acknowledgements</h1>
 
       <p class="mt-3">
         Fibr is inspired by the previous success of the
