@@ -120,8 +120,9 @@ a {
   border-style: solid;
   border-color: black;
   border-radius: 10px;
-  max-width: 350px;
+  max-width: 250px;
   margin: auto;
+  font-weight: bold;
 }
 
 .landing .lead {
