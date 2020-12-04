@@ -125,7 +125,7 @@
   },
   "home": {
     "shortTitle": "fibr",
-    "title": "fibr: swipe left on dirty minds",
+    "title": "fibr",
     "tagline": "A citizen science game to measure the quality of children's brain images",
     "backgroundUrl": "https://raw.githubusercontent.com/richford/fibr/master/src/assets/fibr_example_optimized.gif"
   },
