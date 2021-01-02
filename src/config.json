@@ -105,10 +105,26 @@
     "11": {
       "level": 11,
       "min": 7500,
-      "max": 10000,
+      "max": 9999,
+      "character": "sauropod",
+      "img": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F995.svg?sanitize=true",
+      "img_grey": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/black/svg/1F995.svg?sanitize=true"
+    },
+    "12": {
+      "level": 12,
+      "min": 10000,
+      "max": 12499,
       "character": "unicorn",
       "img": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F984.svg?sanitize=true",
       "img_grey": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/black/svg/1F984.svg?sanitize=true"
+    },
+    "13": {
+      "level": 13,
+      "min": 12500,
+      "max": 20000,
+      "character": "brain",
+      "img": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F9E0.svg?sanitize=true",
+      "img_grey": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/black/svg/1F9E0.svg?sanitize=true"
     }
   },
   "betaMode": false,
