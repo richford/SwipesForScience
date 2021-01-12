@@ -102,7 +102,7 @@
 .leaderboard__cell.user-score {
   position: relative;
   font-weight: 700;
-  width: 2.5em;
+  width: 3em;
   padding-left: 1em;
 }
 .leaderboard__cell.user-score:before {
