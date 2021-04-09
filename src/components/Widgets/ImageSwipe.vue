@@ -83,7 +83,7 @@ import VueProgressiveImage from "../../../node_modules/vue-progressive-image/dis
 Vue.use(VueProgressiveImage);
 Vue.use(VueHammer);
 Vue.use(require("vue-shortkey"), {
-  prevent: [".modal-content", ".modal-dialog"]
+  prevent: [".modal-content *", ".modal-dialog *", ".chat *"]
 });
 
 export default {
