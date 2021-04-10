@@ -198,10 +198,10 @@ export default {
   computed: {
     sortedUsersList() {
       /* Removes '.key' property present on allUsers data */
-      let allUsernames = Object.keys(this.allUsers).filter(
-        userName => userName !== ".key"
-      );
       const that = this;
+      let allUsernames = Object.keys(this.allUsers).filter(
+        userName => userName !== ".key" && that.allUsers[userName].score
+      );
       // eslint-disable-next-line
       allUsernames = allUsernames.map((userName) => {
         return {
